@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration using environment variables
 const firebaseConfig = {
@@ -15,9 +16,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // Sign-up function
 export const signUp = (email, password) => {
@@ -29,4 +29,4 @@ export const login = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-export { auth };
+export { auth, db};
